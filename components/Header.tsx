@@ -49,13 +49,7 @@ const Header: React.FC<HeaderProps> = ({ industrySlugs }) => {
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
         <Link href="/" className="text-xl font-bold">
-          {/* Replace with your logo if available */}
-          <Image
-            src="/futurebridge-logo.svg"
-            alt="FutureBridge Logo"
-            width={180}
-            height={40}
-          />
+          FutureBridge
         </Link>
         <div className="flex items-center space-x-6">
           <Link href="/about" className="text-gray-600 hover:text-blue-600">

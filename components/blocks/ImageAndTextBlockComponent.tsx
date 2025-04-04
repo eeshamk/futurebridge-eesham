@@ -17,6 +17,24 @@ interface ImageAndTextBlockProps {
 const ImageAndTextBlockComponent: React.FC<ImageAndTextBlockProps> = ({
   block,
 }) => {
+  // Special handling for the "Past..." section
+  if (block.heading === 'Past…') {
+    return (
+      <div className="my-8">
+        {block.heading && (
+          <h2 className="text-3xl font-bold mb-4">{block.heading}</h2> // Use standard heading style
+        )}
+        {block.description && (
+          <div
+            className="prose max-w-none text-gray-700" // Standard description styling
+            dangerouslySetInnerHTML={{ __html: block.description }}
+          />
+        )}
+      </div>
+    );
+  }
+
+  // Default rendering for other ImageAndText blocks
   const isTextLeft = block.contentVariant === 'Text_left_Image_right';
   const imageAttributes = block.image?.data?.attributes;
   const imageUrl = imageAttributes?.url;

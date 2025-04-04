@@ -39,25 +39,28 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 
   // Fetch data for the specific industry
   const pageData: IndustryPageData | null = await getJsonData(filePath);
-
   const pageContent = pageData as IndustryPage | null;
+  // --- End Revert ---
 
   if (!pageContent) {
     console.warn(
+      // Revert warning message too
       `[IndustryPage] No pageContent found for slug: ${slug} at path: ${filePath}. Triggering notFound().`
     );
     notFound();
   }
 
+  // Access blocks (reverting to previous access pattern)
   const blocks = pageContent.blocks || [];
 
   return (
     <main className="container mx-auto px-6 py-8">
-      {/* Optional: Render page title or other top-level elements like a banner */}
+      {/* Optional: Render page title */}
       {/* <h1 className="text-4xl font-bold mb-8">{pageContent.title}</h1> */}
 
       {/* Render the blocks using BlockRenderer */}
       {blocks.length > 0 ? (
+        // Revert block type back to any for now, as PageBlock might cause issues if pageContent isn't correctly typed
         blocks.map((block: any, index: number) => (
           <BlockRenderer key={index} block={block} />
         ))
@@ -74,8 +77,8 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
 // export async function generateMetadata({ params }: IndustryPageProps): Promise<Metadata> {
 //   const { slug } = await params;
 //   const filePath = `Pages/industry/${slug}.json`;
-//   const pageData: IndustryPageData | null = await getJsonData(filePath);
-//   const pageContent = pageData?.data?.pages?.[0];
+//   const pageData: IndustryPageData | null = await getJsonData(filePath); // Revert here too
+//   const pageContent = pageData?.data?.pages?.[0]; // This might be the correct part from previous code? Keep for now.
 
 //   return {
 //     title: pageContent?.title || 'Industry Page',

@@ -19,6 +19,13 @@ import type {
   PostContent2ColumnLayoutBlock,
   PostContent4ColumnLayoutBlock,
   ClientsStoriesBlock,
+  ImageAndTextClickableBlock,
+  SgfBlock,
+  ImagePopupBlock,
+  SidebarContentAndReferenceSectionBlock,
+  OverviewHeadingAndContentBlock,
+  QuotesAndContentsBlock,
+  PdfCbBlock,
 } from '@/types/blocks';
 
 // Import ALL block components
@@ -38,6 +45,13 @@ import ClientLogosBlock from './blocks/ClientLogosBlock';
 import PostContent2ColumnLayout from './blocks/PostContent2ColumnLayout';
 import PostContent4ColumnLayout from './blocks/PostContent4ColumnLayout';
 import ClientsStories from './blocks/ClientsStories';
+import ImageAndTextClickableBlockComponent from './blocks/ImageAndTextClickableBlock';
+import SgfBlockComponent from './blocks/SgfBlockComponent';
+import ImagePopupBlockComponent from './blocks/ImagePopupBlock';
+import SidebarContentAndReferenceSection from './blocks/SidebarContentAndReferenceSectionBlock';
+import OverviewHeadingAndContent from './blocks/OverviewHeadingAndContentBlock';
+import QuotesAndContentsBlockComponent from './blocks/QuotesAndContentsBlock';
+import PdfCbBlockComponent from './blocks/PdfCbBlock';
 
 // Remove all local interface definitions for blocks
 // They are now imported from @/types/blocks
@@ -120,6 +134,43 @@ const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
 
     case 'ComponentBlocksClientsStories':
       return <ClientsStories block={block as ClientsStoriesBlock} />;
+
+    case 'ComponentBlocksImageAndTextClickable':
+      return (
+        <ImageAndTextClickableBlockComponent
+          block={block as ImageAndTextClickableBlock}
+        />
+      );
+
+    case 'ComponentBlocksSgf':
+      return <SgfBlockComponent block={block as SgfBlock} />;
+
+    case 'ComponentBlocksImagePopup':
+      return <ImagePopupBlockComponent block={block as ImagePopupBlock} />;
+
+    case 'ComponentBlocksSidebarContentAndReferenceSection':
+      return (
+        <SidebarContentAndReferenceSection
+          block={block as SidebarContentAndReferenceSectionBlock}
+        />
+      );
+
+    case 'ComponentBlocksOverviewHeadingAndContent':
+      return (
+        <OverviewHeadingAndContent
+          block={block as OverviewHeadingAndContentBlock}
+        />
+      );
+
+    case 'ComponentBlocksQuotesAndContents':
+      return (
+        <QuotesAndContentsBlockComponent
+          block={block as QuotesAndContentsBlock}
+        />
+      );
+
+    case 'ComponentBlocksPdfCb':
+      return <PdfCbBlockComponent block={block as PdfCbBlock} />;
 
     default:
       const typeName = block.__typename;

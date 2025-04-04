@@ -248,7 +248,83 @@ export interface ClientsStoriesBlock {
   [key: string]: any;
 }
 
-// --- Union Type for All Blocks ---
+// --- Image And Text Clickable Block Interface ---
+export interface ImageAndTextClickableBlock {
+  __typename: 'ComponentBlocksImageAndTextClickable';
+  heading?: string | null;
+  description?: string | null; // Contains HTML
+  image?: StrapiMediaObject | null;
+  contentVariant?: string | null; // e.g., 'Text_left_Image_right'
+  buttonName?: string | null;
+  buttonLink?: string | null;
+  isExternal?: boolean | null;
+  buttonTarget?: string | null;
+  buttonVariant?: string | null;
+  [key: string]: any;
+}
+
+// --- SGF Block Interface ---
+export interface SgfBlock {
+  __typename: 'ComponentBlocksSgf';
+  heading?: string | null;
+  subHeading?: string | null;
+  content?: string | null; // HTML content
+  image?: StrapiMediaObject | null;
+  // SGF likely stands for some specific content format or feature
+  // Adding common fields that might be needed
+  buttonName?: string | null;
+  buttonLink?: string | null;
+  isExternal?: boolean | null;
+  buttonTarget?: string | null;
+  [key: string]: any;
+}
+
+// --- Image Popup Block Interface (Ensure Exported) ---
+export interface ImagePopupBlock {
+  __typename: 'ComponentBlocksImagePopup';
+  imagePopupTitle?: string | null;
+  imagePopup?: StrapiMediaObject | null;
+  enable?: boolean | null;
+  [key: string]: any;
+}
+
+// --- Sidebar Content and Reference Section Block Interface (Ensure Exported) ---
+export interface SidebarContentAndReferenceSectionBlock {
+  __typename: 'ComponentBlocksSidebarContentAndReferenceSection';
+  title?: string | null;
+  description?: string | null; // HTML content
+  sizeVariant?: 'Full_width' | 'Half_width' | string | null; // Example variants
+  [key: string]: any;
+}
+
+// --- Quotes And Contents Block Interface ---
+export interface QuotesAndContentsBlock {
+  __typename: 'ComponentBlocksQuotesAndContents';
+  quote?: string | null;
+  content?: string | null; // HTML content
+  quoteVariant?: string | null; // e.g., Quote_and_content_right_align
+  [key: string]: any;
+}
+
+// --- Overview Heading And Content Block Interface ---
+export interface OverviewHeadingAndContentBlock {
+  __typename: 'ComponentBlocksOverviewHeadingAndContent';
+  heading?: string | null;
+  description?: string | null; // HTML content
+  variant?: string | null; // e.g., Content_with_Top_and_Bottom_border
+  [key: string]: any;
+}
+
+// --- PDF Cb Block Interface ---
+export interface PdfCbBlock {
+  __typename: 'ComponentBlocksPdfCb';
+  title?: string | null;
+  pdf?: StrapiMediaObject | null; // Original expected key
+  document?: StrapiMediaObject | null; // Add alternative key found in data
+  [key: string]: any;
+}
+
+// --- Union Type for All Blocks (Ensure all types are included) ---
 export type PageBlock =
   | HeadingBlock
   | DescriptionBlock
@@ -265,4 +341,11 @@ export type PageBlock =
   | PromotionalBannerCtaBlock
   | PostContent2ColumnLayoutBlock
   | PostContent4ColumnLayoutBlock
-  | ClientsStoriesBlock;
+  | ClientsStoriesBlock
+  | ImageAndTextClickableBlock
+  | SgfBlock
+  | ImagePopupBlock
+  | SidebarContentAndReferenceSectionBlock
+  | OverviewHeadingAndContentBlock
+  | QuotesAndContentsBlock
+  | PdfCbBlock;
